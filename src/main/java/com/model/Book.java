@@ -1,6 +1,8 @@
 package com.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Books")
@@ -9,6 +11,9 @@ public class Book {
     private Long id;
     private String nome;
     private String isbn;
+
+    @ManyToMany
+    private List<Author> autores = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -32,5 +37,13 @@ public class Book {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    public List<Author> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(List<Author> autores) {
+        this.autores = autores;
     }
 }
